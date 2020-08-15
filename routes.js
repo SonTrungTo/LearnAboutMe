@@ -59,7 +59,7 @@ router.post("/signup", [
       req.flash("error", "User or email already exists!");
       return res.redirect("/signup");
     }
-    if (errors) {
+    if (errors.length != 0) {
       for (let error of errors) {
         req.flash("error", String(error.msg));
       }
