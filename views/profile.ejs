@@ -1,0 +1,14 @@
+<%- include('_header') %>
+<% if ( (currentUser) && (currentUser.id === user.id) ) { %>
+  <div class="text-right">
+    <a href="/edit">Edit your profile</a>
+  </div>
+<% } %>
+
+<h1 class="mt-3"><%= user.name() %></h1>
+<h5>Joined on <%= user.createdAt %></h5>
+
+<% if (user.bio) { %>
+  <p><%= user.bio %></p>
+<% } %>
+<%- include('_footer') %>

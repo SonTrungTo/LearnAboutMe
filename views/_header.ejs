@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Learn About Me</title>
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous" />
+  </head>
+  <body>
+    <div class="navbar navbar-expand-sm navbar-default bg-light navbar-static-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand">Learn About Me</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if(currentUser) { %>
+            <li class="nav-item">
+              <a href="/edit" class="nav-link">
+                Hello, <%= currentUser.name() %>
+              </a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
+          <% } else { %>
+            <li class="nav-item"><a href="/login" class="nav-link">Log in</a></li>
+            <li class="nav-item"><a href="/signup" class="nav-link">Sign up</a></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <% errors.forEach((error) => { %>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+      <% }) %>
+
+      <% infos.forEach((info) => { %>
+        <div class="alert alert-info" role="alert">
+          <%= info %>
+        </div>
+      <% }) %>

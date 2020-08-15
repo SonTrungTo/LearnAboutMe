@@ -1,0 +1,18 @@
+<%- include('_header') %>
+
+ <h1>Edit your profile</h1>
+
+ <form action="/edit" method="post">
+   <div class="form-group row">
+     <input type="text" name="displayname"
+     placeholder="Display name" value="<%= currentUser.displayName || "" %>"
+     class="form-control" />
+   </div>
+   <div class="form-group row">
+     <textarea name="bio" class="form-control"
+     placeholder="Tell us about yourself!"><%= currentUser.bio || "" %></textarea>
+   </div>
+   <input type="submit" class="btn btn-primary btn-block" value="Update" />
+ </form>
+
+<%- include('_footer') %>
