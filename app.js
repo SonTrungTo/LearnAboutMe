@@ -37,6 +37,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(session({
   secret,
+  store: new RedisStore(),
   resave: true, // session store that does not support "touch", or updating session (saving it)
   saveUninitialized: true // to regconize the session store id (cookie), regconize the old users and save it.
 }));
