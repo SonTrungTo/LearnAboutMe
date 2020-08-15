@@ -42,7 +42,7 @@ router.post("/signup", [
           if (val !== req.body.confirm) {
             throw new Error("Passwords don't match");
           } else {
-            return value;
+            return val;
           }
         }),
   check('email', 'Email is required!').isEmail()
