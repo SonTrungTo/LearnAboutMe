@@ -11,6 +11,7 @@ const setUpPassport = require("./setuppassport");
 // additional extra stuffs
 const favicon = require("static-favicon"); // deprecated!
 const logger  = require("morgan");
+const MongoStore = require("connect-mongo")(session);
 require("dotenv").config();
 
 let salt1 = bcrypt.genSaltSync();
@@ -37,7 +38,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(session({
   secret,
-  store: new RedisStore(),
+  store: new MongoStore({mongooseConnection: mongoose.connection}),
   resave: true, // session store that does not support "touch", or updating session (saving it)
   saveUninitialized: true // to regconize the session store id (cookie), regconize the old users and save it.
 }));
