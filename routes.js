@@ -53,7 +53,7 @@ router.post("/signup", [
 
   let errors = validationResult(req).array();
 
-  User.findOne({$and: [{username}, {email}]}, (err, user) => {
+  User.findOne({$or: [{username}, {email}]}, (err, user) => {
     if (err) {return next(err);}
     if (user) {
       req.flash("error", "User or email already exists!");
