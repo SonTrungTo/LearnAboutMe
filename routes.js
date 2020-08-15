@@ -236,8 +236,8 @@ router.post("/reset/:token", (req, res, next) => {
         from:     process.env.REACT_APP_SENDGRID_USERNAME,
         subject:  'LearnFromMe password has been changed,',
         text:  'Hi, \n\n' +
-        'This is a confirmation that your password for the account' + user.email +
-        'has been changed. \n\n' +
+        'This is a confirmation that your password for the account ' + user.email +
+        ' has been changed. \n\n' +
         'Best, \n' + 'LearnFromMe team.'
       };
       smtpTransport.sendMail(mailOptions, err => {
