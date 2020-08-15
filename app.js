@@ -11,6 +11,7 @@ const setUpPassport = require("./setuppassport");
 // additional extra stuffs
 const favicon = require("static-favicon"); // deprecated!
 const logger  = require("morgan");
+require("dotenv").config();
 
 let salt1 = bcrypt.genSaltSync();
 let salt2 = bcrypt.genSaltSync();
@@ -20,7 +21,8 @@ const routes = require("./routes");
 
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/learn_about_me_db", {useNewUrlParser: true, useUnifiedTopology: true});
+const url = `mongodb+srv://${process.env.REACT_APP_ATLAS_USERNAME}:${process.env.REACT_APP_ATLAS_PASSWORD}@cluster0.v1f0n.mongodb.net/${process.env.REACT_APP_ATLAS_DATABASE}?retryWrites=true&w=majority`;
+mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 setUpPassport(); // to serialize and deserialize to and from session
 
 app.set("port", process.env.PORT || 3000);
